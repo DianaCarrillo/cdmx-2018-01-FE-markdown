@@ -1,14 +1,16 @@
 // requiring file system module, path module, fetch module 
-let fs = require('fs');
-const path = require('path');
+const fs = require('fs');
+const pathRequire = require('path');
 const fetch = require('node-fetch');
 
-const mdLinks = (path1) =>{
-  let absolutePath = path.resolve(path1);
+const mdLinks = (path) =>{
+  let absolutePath = pathRequire.resolve(path);
+
   fs.readFile(absolutePath, 'utf8', (error, data) => {
     if (error) {
       console.log('error:', error);
     } else {
+      // console.log(options);
     //  we want regex to find "[text] (https://www.)" 
       let regEx = /\[([^\[\]]*)\]\(((https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,}))\)/g;
       //  matchedLinksArray is matching the regex with the specific pieces of data.
@@ -24,10 +26,14 @@ const mdLinks = (path1) =>{
           text: urlText,
           file: absolutePath
         };
-        validate(url, urlText, path1);
+        if (process.argv[3] === '--validate') {
+          validate(url, urlText, path);
+        }
         return object;
       });
-      stats(matchedRegEx);
+      if (process.argv[3] === '--stats') {
+        stats(matchedRegEx);
+      }
       // console.log(newArrayFunction);    
     }
   });
@@ -35,11 +41,11 @@ const mdLinks = (path1) =>{
 
 
 // function to obtain links' statistics 
-const validate = (url, urlText, path1) =>{
+const validate = (url, urlText, path) =>{
   fetch(url).then((res=>{
     let linkStatus = res.status;
     let statusText = res.statusText;
-    console.log(path1, url, statusText, linkStatus, urlText);
+    console.log(path, url, statusText, linkStatus, urlText);
   }
   ));
 };
@@ -55,8 +61,8 @@ const stats = (matchedRegEx) =>{
       }
     }
   }
-//   console.log(`Total : ${totalUrls}
-// Unique : ${counterUnique}`);
+  console.log(`Total : ${totalUrls}
+Unique : ${counterUnique}`);
 };
 
 // process.argv.forEach(function(val, index) {

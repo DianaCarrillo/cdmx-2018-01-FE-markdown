@@ -69,7 +69,7 @@ const mdLinks = (path) =>{
   const readMd = mdFileReader(absolutePathReturn);
   const regexF = regExFunction(readMd);
   const newArray = splitingRegex(regexF, absolutePathReturn);
-  if (process.argv[1] === `md-links` && process.argv[2] `${path}`) {
+  if (process.argv[2] === `${path}` && process.argv[3] === undefined) {
     console.log(newArray);
   }
   newArray.forEach(element => {
@@ -88,11 +88,5 @@ module.exports = mdLinks;
 /* readFile, método asíncrono, recibe 3 parámetros. 1 es la ruta del archivo que queremos leer, el segundo es un string con el juego de
      caracteres en el que el archivo está codificado y el 3ro es una callback que se ejecutará en el momento en el que el archivo esta leído
     y se encuentra disponible para hacer alguna cosa */
-// const promesa = new Promise((resolve, reject)=>{
-//   if (true) {
-//     resolve(gettingPath(absolutePath));
-//   } else {
-//     reject('error:', error);
-//   }
-// });
+
 

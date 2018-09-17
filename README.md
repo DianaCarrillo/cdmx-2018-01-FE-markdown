@@ -2,7 +2,7 @@
 # Markdown Links
 
 Markdown Links es una herramienta que nos han propuesto dentro de una comunidad de código abierto usando [Node.js](https://nodejs.org/). Esta herramienta lee y analiza archivos
-en formato `Markdown`, para verificar los links que contengan y reportar
+en formato `Markdown`, verifica los links que contenga y reporta
 algunas estadísticas.
 
 
@@ -14,7 +14,7 @@ Para poder instalar el módulo en tu proyecto haz:
  
  ## Modo de uso
  
-Para poder visualizar las ligas que contiene tu archivo md junto con el nombre y el archivo en el que se encuentran escribe en la consola:
+Para poder visualizar las ligas que contiene el archivo .md, el nombre y el archivo en el que se encuentran escribe en la consola:
 
 `md-links <path>`
 
@@ -31,7 +31,7 @@ Como resultado obtendrás un arreglo de objetos como el siguiente:
     file:
      'C:\\Users\\Sony\\Desktop\\Laboratoria\\cdmx-2018-01-FE-markdown\\README.md' }]
  ```
-Para poder visualizar el estado de las ligas utiliza el siguiente comando:
+si deseas visualizar el estado de las ligas utiliza el siguiente comando:
 
 `md-links <path> --validate`
 

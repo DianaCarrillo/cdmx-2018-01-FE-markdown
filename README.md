@@ -1,7 +1,7 @@
 
 # Markdown Links
 
-Markdown es una herramienta que nos han propuesto dentro de una comunidad de código abierto usando [Node.js](https://nodejs.org/). Esta herramienta lee y analiza archivos
+Markdown Links es una herramienta que nos han propuesto dentro de una comunidad de código abierto usando [Node.js](https://nodejs.org/). Esta herramienta lee y analiza archivos
 en formato `Markdown`, para verificar los links que contengan y reportar
 algunas estadísticas.
 
